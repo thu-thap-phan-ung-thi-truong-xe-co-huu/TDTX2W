@@ -464,7 +464,7 @@ function render(){
  const by={};r.forEach(x=>{(by[x.ngay]=by[x.ngay]||[]).push(x);});
  let h=['T2','T3','T4','T5','T6','T7','CN'].map(d=>`<div class="h">${d}</div>`).join('');
  const start=new Date(2026,9,26);
- for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);if(d>new Date(2026,10,22))break;
+ for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);if(i%7===0&&d>new Date(2026,10,30))break;
   const inM=d.getMonth()===10, key=String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.2026', it=by[key]||[];
   const data=inM&&d.getDate()<=24;
   h+=`<div class="day ${inM?'':'out'}" ${data?'':'style="opacity:.45"'}><div class="dn"><b>${d.getDate()}${inM?'':'.'+(d.getMonth()+1)}</b><span>${it.length?it.length+' bài':''}</span></div>${it.slice(0,3).map(chipFor).join('')}${it.length>3?`<button class="more" data-d="${key}">+${it.length-3} bài khác</button>`:''}</div>`;}
